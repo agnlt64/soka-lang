@@ -1,9 +1,16 @@
+UNAME_S = $(shell uname -s)
 EXEC := sokac
-CC := gcc-12
+CC := 
 
 SRCS := $(wildcard src/*.c)
 OBJS := $(SRCS:.c=.o)
 CFLAGS := -g -Wall -lm -fPIC -rdynamic
+
+ifeq ($(UNAME_S), Darwin)
+        CC = gcc-12
+else
+        CC = gcc
+endif
 
 $(EXEC): $(OBJS)
 	mkdir -p bin/

@@ -14,7 +14,7 @@ void soka_compile(char* src)
   Parser_T* parser = init_parser(lexer);
   AST_T* root = parser_parse(parser);
 
-  printf("%d\n", root->children->size);
+  printf("%ld\n", root->children->size);
 
   Token_T* tok = 0;
   while ((tok = lexer_next_token(lexer))->type != TOKEN_EOF)
